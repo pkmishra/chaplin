@@ -10,10 +10,7 @@ define ['mediator', 'lib/route'], (mediator, Route) ->
 
       # ---- THE INTREDASTING PART STARTS: ---- #
 
-      @match '', 'likes#index'
-      @match 'likes/:id', 'likes#show'
-
-      @match 'posts', 'posts#index'
+      @match '', 'posts#index'
 
       # ---- THE INTREDASTING PART ENDS. ---- #
 

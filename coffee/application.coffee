@@ -1,7 +1,7 @@
 define [
-  'mediator', 'controllers/session_controller',
+  'mediator',
   'controllers/application_controller', 'lib/router'
-], (mediator, SessionController, ApplicationController, Router) ->
+], (mediator, ApplicationController, Router) ->
   'use strict'
 
   # The application bootstrapper.
@@ -17,7 +17,6 @@ define [
       # At the moment, do not save the references.
       # They might be safed as instance properties or directly on the mediator.
       # Normally, controllers can communicate with each other via Pub/Sub.
-      new SessionController()
       new ApplicationController()
 
     # Instantiate the router

@@ -11,9 +11,7 @@ define(['mediator', 'lib/route'], function(mediator, Route) {
     }
 
     Router.prototype.registerRoutes = function() {
-      this.match('', 'likes#index');
-      this.match('likes/:id', 'likes#show');
-      return this.match('posts', 'posts#index');
+      return this.match('', 'posts#index');
     };
 
     Router.prototype.startHistory = function() {

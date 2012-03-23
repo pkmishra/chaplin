@@ -1,5 +1,5 @@
 
-define(['mediator', 'controllers/session_controller', 'controllers/application_controller', 'lib/router'], function(mediator, SessionController, ApplicationController, Router) {
+define(['mediator', 'controllers/application_controller', 'lib/router'], function(mediator, ApplicationController, Router) {
   'use strict';
   var Application;
   Application = {
@@ -8,7 +8,6 @@ define(['mediator', 'controllers/session_controller', 'controllers/application_c
       this.initRouter();
     },
     initControllers: function() {
-      new SessionController();
       return new ApplicationController();
     },
     initRouter: function() {

@@ -19,28 +19,20 @@ define(['mediator', 'models/collection', 'models/post'], function(mediator, Coll
     Posts.prototype.initialize = function() {
       Posts.__super__.initialize.apply(this, arguments);
       _(this).extend($.Deferred());
-      this.getPosts();
-      this.subscribeEvent('login', this.getPosts);
-      return this.subscribeEvent('logout', this.reset);
+      return this.getPosts();
     };
 
     Posts.prototype.getPosts = function() {
-      var provider, user;
-      user = mediator.user;
-      if (!user) return;
-      provider = user.get('provider');
-      if (provider.name !== 'facebook') return;
       this.trigger('loadStart');
-      return provider.getInfo('/158352134203230/feed', this.processPosts);
+      return $.ajax({
+        url: 'http://api.twitter.com/1/statuses/user_timeline.json?screen_name=ladygaga&callback=?',
+        dataType: 'json',
+        success: this.processPosts
+      });
     };
 
-    Posts.prototype.processPosts = function(response) {
-      var posts;
+    Posts.prototype.processPosts = function(posts) {
       this.trigger('load');
-      posts = response && response.data ? response.data : [];
-      posts = _(posts).filter(function(post) {
-        return post.from && post.from.name === 'moviepilot.com';
-      });
       this.reset(posts);
       return this.resolve();
     };

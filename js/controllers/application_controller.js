@@ -1,7 +1,7 @@
 var __hasProp = Object.prototype.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; };
 
-define(['controllers/controller', 'views/application_view', 'controllers/navigation_controller', 'controllers/sidebar_controller'], function(Controller, ApplicationView, NavigationController, SidebarController) {
+define(['controllers/controller', 'views/application_view'], function(Controller, ApplicationView) {
   'use strict';
   var ApplicationController;
   return ApplicationController = (function(_super) {
@@ -13,17 +13,11 @@ define(['controllers/controller', 'views/application_view', 'controllers/navigat
     }
 
     ApplicationController.prototype.initialize = function() {
-      this.initApplicationView();
-      return this.initSidebars();
+      return this.initApplicationView();
     };
 
     ApplicationController.prototype.initApplicationView = function() {
       return new ApplicationView();
-    };
-
-    ApplicationController.prototype.initSidebars = function() {
-      new NavigationController();
-      return new SidebarController();
     };
 
     return ApplicationController;
